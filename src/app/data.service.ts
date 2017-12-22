@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { Http,RequestOptions,Headers } from '@angular/http';
 import { HttpParams, HttpClient } from '@angular/common/http';
 import 'rxjs/add/operator/map';
+import { forEach } from '@angular/router/src/utils/collection';
 
 @Injectable()
 export class DataService {
@@ -44,7 +45,7 @@ export class DataService {
   postUsertask(Userid,TaskName,Deadline)
   {
    
-    let body = {userid:Userid,taskname:TaskName,deadline:Deadline};    
+    let body = {userid:Userid,taskname:TaskName,deadline:new Date(Deadline).toISOString()};    
     console.log(body);
     return this.http.post("http://localhost/ci-abc/api/add_task",body,this.options)
     .map(res => res.json());
@@ -62,6 +63,12 @@ export class DataService {
     let myParams = new URLSearchParams(); 
     myParams.append('userid', userID);
     return this.http.get("http://localhost/ci-abc/api/get_usertasks?"+myParams.toString())
-    .map(res=>res.json());
+    .map(res=>{
+      var response = res.json();
+      response.forEach((task)=>{
+        task.deadline = new Date(task.deadline+'Z').toLocaleString();
+      });
+      return response;
+    });
   }
 }
