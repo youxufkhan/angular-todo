@@ -1,0 +1,27 @@
+<div class="container" >
+    <h1>Todo App | XUF</h1>
+
+    <ul class="nav nav-tabs">
+        <li role="presentation"><a href="#user" (click)="clicked('exis')">Existing User</a></li>
+        <li role="presentation"><a href="#newuser" (click)="clicked('new')">New User</a></li>
+      </ul>
+
+    <form #userForm="ngForm" *ngIf="clickStatus == 'exis'">
+      <div class="form-group">
+        <h2>Existing User</h2>
+        <label for="name">Username</label>
+        <input type="text" class="form-control" id="username" required [(ngModel)]="username" name="username" >
+      </div>
+      <button type="submit" class="btn btn-success" (click)="submit()">Open ToDo</button>
+    </form>
+
+    
+    <form #userForm="ngForm" *ngIf="clickStatus == 'new'">
+        <div class="form-group">
+          <h2>Create User</h2>
+          <label for="name">Username</label>
+          <input type="text" class="form-control" id="username" required   [(ngModel)]="username" name="username" >
+        </div>
+        <button type="submit" class="btn btn-success" (click)="create()">Create User</button>
+    </form>
+</div>

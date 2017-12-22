@@ -1,0 +1,65 @@
+
+
+<div class="container" >
+  <h1>Tasks List</h1>
+  
+  <table class="table">
+    <thead>
+      <tr>
+        <th >#</th>
+        <th>Task Title</th>
+        <th>Deadline</th>
+        <th>Delete</th>
+        <th>Edit</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let task of tasks; let i = index" >
+        <th>{{i+1}}</th>
+        <td *ngIf="editMode && i == cetIndex" >
+         <input class="form-control" type="text" name="taskname" [(ngModel)]="ceTask">
+        </td>
+        <td *ngIf="!editMode || i !== cetIndex">
+          {{task.task}}
+        </td>
+        <td>{{task.deadline}}</td>
+        <td><button type="submit" class="btn btn-danger" (click)="delete(task.id)">delete</button></td>
+        <td>
+           <button *ngIf="editMode && i == cetIndex" 
+            type="submit" class="btn btn-primary" (click)="updatetask(task.id,ceTask)">save</button>
+
+          <button type="submit" class="btn btn-default" (click)="editsubmit(task.task,i)">
+            <span *ngIf="!editMode || i !== cetIndex" >edit</span>
+            <span *ngIf="editMode && i == cetIndex">cancel</span>
+          </button>
+        </td>  
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="row">
+    <div class="col-xs-6 col-md-4">
+        <form #addTask="ngForm" >
+            <div class="form-group">
+              <label for="newTaskName">AddTask</label>
+              <input type="text" class="form-control" required  
+                     [(ngModel)]="newTaskName" name="newTaskName" >
+                     <label for="newTaskDeadline">Deadline</label>
+                     <owl-date-time [dataType]="'string'" [placeHolder]="'YYYY-MM-DD HH:mm:ss'" 
+                     [dateFormat]="'YYYY-MM-DD HH:mm:ss'" [inputStyleClass]="'form-control'"s [(ngModel)]="newTaskDeadline" name="newTaskDeadline" ></owl-date-time>
+                     
+                      
+            </div>
+          </form>
+          <button type="submit" class="btn btn-success" (click)="submit()">Add Task</button>          
+    </div>
+    <div class="col-xs-6 col-md-8">
+      <br><br><br>
+      
+      <button class="btn btn-danger pull-right" routerLink="/">Exit Todo</button>
+    </div>
+  </div>
+
+</div>
+
+
