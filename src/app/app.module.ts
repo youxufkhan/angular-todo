@@ -15,7 +15,7 @@ import { DataService } from './data.service';
 
 const appRoutes: Routes = [
   { path: '', component: UserFormComponent },
-  { path: 'todo/:userid',      component: TodoComponent  }
+  { path: 'todo/:userid', component: TodoComponent  }
 ];
 
 
