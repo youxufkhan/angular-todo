@@ -1,0 +1,5 @@
+.red-task{
+    background-color: rgb(255, 86, 86);
+    border-radius:6px;
+    text-decoration: line-through;
+}

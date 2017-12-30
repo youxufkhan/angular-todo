@@ -10,6 +10,8 @@
         <h2>Existing User</h2>
         <label for="name">Username</label>
         <input type="text" class="form-control" id="username" required [(ngModel)]="username" name="username" >
+        <label for="name">Password</label>
+        <input type="password" class="form-control" id="userPassword" required   [(ngModel)]="userPassword" name="userPassword" >
       </div>
       <button type="submit" class="btn btn-success" (click)="submit()">Open ToDo</button>
     </form>
@@ -20,6 +22,8 @@
           <h2>Create User</h2>
           <label for="name">Username</label>
           <input type="text" class="form-control" id="username" required   [(ngModel)]="username" name="username" >
+          <label for="name">Password</label>
+          <input type="password" class="form-control" id="password" required   [(ngModel)]="password" name="password" >
        </div>
       <button type="submit" class="btn btn-success" (click)="create()">Create User</button>
     </form>

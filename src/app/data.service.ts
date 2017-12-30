@@ -19,10 +19,19 @@ export class DataService {
     let options = new RequestOptions({ headers: headers });
   }
 
-  createUser(userName)
+  login(userName,passWord)
   {
-    let body = { username:userName
-                  
+    let body = {
+      username:userName,
+      password:passWord
+    };
+    return this.http.post("http://localhost/ci-abc/api/login_user",body)
+    .map(res => res.json());
+  }
+  createUser(userName,passWord)
+  {
+    let body = { username:userName,
+                  password:passWord
     };
     return this.http.post("http://localhost/ci-abc/api/create_user",body,this.options)
     .map(res => res.json());
@@ -90,6 +99,22 @@ export class DataService {
         task.deadline = new Date(task.deadline+'Z').toLocaleString();
         task.created_at = new Date(task.created_at+'Z').toLocaleString();
         task.start_time = new Date(task.start_time+'Z').toLocaleString();
+
+        let currenttime = new Date().getTime();
+        let deadline = new Date(task.deadline).getTime();
+
+        let result = deadline - currenttime;
+        console.log(result);
+        if(result<0)
+        {
+          console.log('task expired');
+          task.taskClass="red-task";
+        }
+        else
+        {
+          console.log('task is available');
+        }
+
       });
       return response;
     });

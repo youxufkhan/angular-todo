@@ -16,7 +16,7 @@
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let task of tasks; let i = index" >
+      <tr *ngFor="let task of tasks; let i = index" [class]="task.taskClass" >
         <th>{{i+1}}</th>
         <td *ngIf="editMode && i == cetIndex" >
          <input class="form-control" type="text" name="taskname" [(ngModel)]="ceTask">
