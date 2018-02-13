@@ -110,9 +110,9 @@ export class DataService {
           console.log('task expired');
           task.taskClass="red-task";
         }
-        else
+        else if(result<18000000)
         {
-          console.log('task is available');
+          task.taskClass="yellow-task";
         }
 
       });

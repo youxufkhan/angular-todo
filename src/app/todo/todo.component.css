@@ -1,5 +1,30 @@
 .red-task{
     background-color: rgb(255, 86, 86);
-    border-radius:6px;
     text-decoration: line-through;
+}
+.yellow-task{
+    background-color: rgb(255, 224, 86);
+    
+}
+
+.avail{
+    color: white;
+    text-shadow: -1px 0 rgba(0, 0, 0, 0.384), 0 1px black, 1px 0 black, 0 -1px black;
+    
+}
+
+.critical{
+    color: rgb(255, 224, 86);
+    font-size: 19px;
+    font-weight: bold;
+}
+
+.expired{
+    color: rgb(255, 86, 86);
+    font-size: 19px;
+    font-weight: bold;
+}
+
+.critical .spa{
+    font-size:25px;
 }
